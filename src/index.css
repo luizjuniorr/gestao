@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: font-family: "Inter", sans-serif;;
+}
+
+.remove-seta::-webkit-outer-spin-button,
+.remove-seta::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.remove-seta {
+  -moz-appearance: textfield;
+}
