@@ -27,7 +27,7 @@ export function Calculadora() {
             a = 0.14
             d = 190.40
         } else {
-            desconto = 908.86 // teto de contribuição INSS (ajuste conforme o ano)
+            desconto = 967.02 // teto atualizado
             isFixo = true
         }
 
@@ -63,7 +63,7 @@ export function Calculadora() {
             <div>
                 <p>
                     {fixo
-                        ? `Desconto fixo do INSS: R$ ${resultado.toFixed(2)}`
+                        ? `Desconto fixo do INSS (teto): R$ ${resultado.toFixed(2)}`
                         : `Desconto: R$ ${salario} * ${aliquota} - ${deducao} = R$ ${resultado.toFixed(2)}`
                     }
                 </p>
