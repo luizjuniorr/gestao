@@ -5,12 +5,14 @@ export function Calculadora() {
     const [resultado, setResultado] = useState(0)
     const [aliquota, setAliquota] = useState(0)
     const [deducao, setDeducao] = useState(0)
+    const [fixo, setFixo] = useState(false)
 
     function calcular() {
-        const valorNumerico = Number(salario.replace(',', '.')) // aceita vírgula ou ponto
+        const valorNumerico = Number(salario.replace(',', '.'))
         let desconto = 0
         let a = 0
         let d = 0
+        let isFixo = false
 
         if (valorNumerico <= 1518) {
             a = 0.075
@@ -24,12 +26,19 @@ export function Calculadora() {
         } else if (valorNumerico <= 8157.42) {
             a = 0.14
             d = 190.40
+        } else {
+            desconto = 908.86 // teto de contribuição INSS (ajuste conforme o ano)
+            isFixo = true
         }
 
-        desconto = (valorNumerico * a) - d
+        if (!isFixo) {
+            desconto = (valorNumerico * a) - d
+        }
+
         setResultado(desconto)
         setAliquota(a)
         setDeducao(d)
+        setFixo(isFixo)
     }
 
     return (
@@ -53,7 +62,10 @@ export function Calculadora() {
 
             <div>
                 <p>
-                    Desconto: R$ {salario} * {aliquota} - {deducao} = R$ {resultado.toFixed(2)}
+                    {fixo
+                        ? `Desconto fixo do INSS: R$ ${resultado.toFixed(2)}`
+                        : `Desconto: R$ ${salario} * ${aliquota} - ${deducao} = R$ ${resultado.toFixed(2)}`
+                    }
                 </p>
             </div>
         </div>
