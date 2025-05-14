@@ -1,5 +1,5 @@
 
-import { Calculadora } from './components/calculadora'
+import { Calculadora } from './components/Calculadora'
 
 export function App() {
 
