@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-inter: font-family: "Inter", sans-serif;;
+  --font-inter: font-family: "Inter", sans-serif;
 }
 
 .remove-seta::-webkit-outer-spin-button,
